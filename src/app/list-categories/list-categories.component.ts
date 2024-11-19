@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { Categorie } from '../models/categorie';
 import { shortList } from '../models/shortList';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-list-categories',
@@ -8,6 +9,8 @@ import { shortList } from '../models/shortList';
   styleUrls: ['./list-categories.component.css']
 })
 export class ListCategoriesComponent {
+  @ViewChildren(CardComponent) cardComponents: QueryList<CardComponent>;
+
   categories: Categorie[] = [
     { id: 1, title: "Grand électroménager", image: "assets/images/categorie_electromenager.jpg", description: "desc Grand électroménager", available: true },
     { id: 2, title: "Petit électroménager", image: "assets/images/categorie_petit_electromenager.jpg", description: "desc Petit électroménager", available: true },
@@ -22,6 +25,13 @@ export class ListCategoriesComponent {
   myDate: Date = new Date();
   titre: string = "";
 
+  ngAfterViewInit() {
+    this.cardComponents.forEach((cardComponent, index) => {
+      cardComponent.btnText = `Add to shortlist ${index + 1}`; // Set btnText property
+    });
+  }
+
+
   getDescription(description: string) {
     alert(description);
   }
@@ -30,12 +40,16 @@ export class ListCategoriesComponent {
     alert("Hello " + str.code + " " + str.msg);
   }
 
-  addToShortList(obj :any){
-this.shortList.push(obj);
+  addToShortList(obj: shortList) {
+    const alreadyExists = this.shortList.some(item => item.idElement === obj.idElement && item.idUser === obj.idUser);
 
-console.log(this.shortList);
+    if (!alreadyExists) {
+      this.shortList.push(obj);
+      console.log(this.shortList);
+    } else {
+      console.log("Categorie deja existante dans shortlist pour cette utilisateur !");
+    }
   }
-
   
 
   filteredCategories() {

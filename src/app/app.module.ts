@@ -20,6 +20,7 @@ import { ProductsCategoryQPComponent } from './products-category-qp/products-cat
 import { AddProductReactiveComponent } from './add-product-reactive/add-product-reactive.component';
 import { FormProductComponent } from './form-product/form-product.component';
 import { CardComponent } from './card/card.component';
+import { ListProductsComponent } from './list-products/list-products.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CardComponent } from './card/card.component';
     ProductsCategoryQPComponent,
     AddProductReactiveComponent,
     FormProductComponent,
-    CardComponent
+    CardComponent,
+    ListProductsComponent
   ],
   imports: [
     BrowserModule,

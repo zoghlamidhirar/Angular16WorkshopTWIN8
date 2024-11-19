@@ -3,4 +3,5 @@ export class shortList{
     idUser:number;
     idElement:number;
     typeElement:string;
+    
     }
