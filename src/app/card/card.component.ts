@@ -1,4 +1,5 @@
 import { Component,EventEmitter,Input, Output } from '@angular/core';
+import { shortList } from '../models/shortList';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CardComponent {
 
   @Output() notified = new EventEmitter<any>();
 
-  @Output() Element = new EventEmitter<any>();
+  @Output() Element = new EventEmitter<shortList>();
 
   btnText: string = 'Add to shortlist'; 
 
@@ -34,11 +35,15 @@ sendNotif(){
   }
 
   ShortListDetails() {
-    this.Element.emit({
-      idUser: 1, 
-      idElement: this.id, 
-      typeElement: "category"
-    });
+let x : shortList = {
+  id: 1,
+  idUser: 1, 
+  idElement: this.id, 
+  typeElement: "category"
+       }
+
+    this.Element.emit(x);
+                                                  
   }
 
 }

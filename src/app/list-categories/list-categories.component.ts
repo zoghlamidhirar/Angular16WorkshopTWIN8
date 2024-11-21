@@ -25,9 +25,13 @@ export class ListCategoriesComponent {
   myDate: Date = new Date();
   titre: string = "";
 
+
   ngAfterViewInit() {
-    this.cardComponents.forEach((cardComponent, index) => {
-      cardComponent.btnText = `Add to shortlist ${index + 1}`; // Set btnText property
+    this.cardComponents.forEach(child => {
+
+     child.btnText = "Add to shortList 2"  
+     
+     console.log(child.title);
     });
   }
 
