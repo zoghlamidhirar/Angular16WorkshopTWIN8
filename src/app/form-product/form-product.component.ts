@@ -1,6 +1,7 @@
 // form-product.component.ts
 import { Component } from '@angular/core';
 import { Product } from '../models/product';
+import { CategoryService } from '../Services/category.service';
 
 @Component({
   selector: 'app-form-product',
@@ -8,6 +9,9 @@ import { Product } from '../models/product';
   styleUrls: ['./form-product.component.css']
 })
 export class FormProductComponent {
+
+  //constructor (private cs:CategoryService);
+
   products: Product[] = [];
 
   onSubmit(productForm: any) {

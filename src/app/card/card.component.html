@@ -6,12 +6,20 @@
 />
 <h3 appHighlight>{{ title | uppercase }}</h3>
 
+<h3 *ngIf="InProduct">{{ description }}</h3>
+
 <button *ngIf="available" class="btn btn-primary">Voir produits</button>
-<a [routerLink]="['/products']" [queryParams]="{ id: id }"
-  ><button class="btn btn-primary" *ngIf="available">Voir produits2</button></a
->
+<a [routerLink]="['/products']" [queryParams]="{ id: id }">
+  <button class="btn btn-primary" *ngIf="available">Voir produits2</button>
+</a>
 <button class="btn btn-primary" (click)="sendNotif()">Send Notif</button>
 <button class="btn btn-primary" (click)="ShortListDetails()">
   {{ btnText }}
 </button>
-<span *ngIf="!available">Catégorie non disponible</span>
+<button class="btn btn-danger" *ngIf="InProduct" (click)="deleteProduct()">
+  Delete
+</button>
+<!-- Add Edit Button -->
+<button class="btn btn-warning" *ngIf="InProduct" (click)="editProduct()">
+  Edit
+</button>

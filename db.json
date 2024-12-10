@@ -1,0 +1,103 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "title": "Grandd électroménager",
+      "image": "assets/images/categorie_electromenager.jpg",
+      "description": "description 1",
+      "available": true
+    },
+    {
+      "id": "2",
+      "title": "Petit électroménager",
+      "image": "assets/images/categorie_petit_electromenager.jpg",
+      "description": "description 2",
+      "available": true
+    },
+    {
+      "id": "3",
+      "title": "Produits informatiques",
+      "image": "assets/images/categorie_produits_informatiques.jpg",
+      "description": "description 3",
+      "available": true
+    },
+    {
+      "id": "4",
+      "title": "Smart Phones",
+      "image": "assets/images/categorie_smartPhone.jpg",
+      "description": "description 4",
+      "available": true
+    },
+    {
+      "id": "5",
+      "title": "TV, images et son",
+      "image": "assets/images/categorie_tv_image_son.jpg",
+      "description": "description 5",
+      "available": false
+    },
+    {
+      "id": "6",
+      "title": "Produits voiture",
+      "image": "assets/images/produits_nettoyages.jpg",
+      "description": "description 6",
+      "available": false
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "title": "Cuisinière",
+      "image": "assets/images/grand_electromenagers/cuisiniere.png",
+      "description": "699 dt",
+      "promotion": false,
+      "quantity": 50,
+      "categoryId": 1
+    },
+    {
+      "id": "2",
+      "title": "Réfrigérateur",
+      "image": "assets/images/grand_electromenagers/refrigerateur.jpg",
+      "description": "1500 dt",
+      "promotion": false,
+      "quantity": 20,
+      "categoryId": 1,
+      "name": "refrigerateur"
+    },
+    {
+      "id": "3",
+      "title": "Robot Pétrin",
+      "image": "assets/images/petit_electromenager/robot_petrin.jpg",
+      "description": "430 dt",
+      "promotion": false,
+      "quantity": 150,
+      "categoryId": 2
+    },
+    {
+      "id": "4",
+      "title": "Fer à repasser",
+      "image": "assets/images/petit_electromenager/fer_a_repasser.jpg",
+      "description": "130 dt",
+      "promotion": false,
+      "quantity": 100,
+      "categoryId": 2
+    },
+    {
+      "id": "5",
+      "title": "Oppo",
+      "image": "assets/images/smart_phones/Oppo.jpg",
+      "description": "920 dt",
+      "promotion": false,
+      "quantity": 10,
+      "categoryId": 4
+    },
+    {
+      "id": "6",
+      "title": "TV Téléfunkun",
+      "image": "assets/images/tv_images_son/tv1.jpg",
+      "description": "845 dt",
+      "promotion": false,
+      "quantity": 50,
+      "categoryId": 5
+    }
+  ]
+}

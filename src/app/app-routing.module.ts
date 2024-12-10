@@ -7,6 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductsCategoryQPComponent } from './products-category-qp/products-category-qp.component';
 import { AddProductReactiveComponent } from './add-product-reactive/add-product-reactive.component';
 import { FormProductComponent } from './form-product/form-product.component';
+import { ListProductsComponent } from './list-products/list-products.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:"products/:id", component:ProductCategoryComponent},
   { path: 'add-product', component: FormProductComponent },
   {path:"addreactive", component:AddProductReactiveComponent},
+  {path:"ListProducts/:id", component:ListProductsComponent},
 //   {path:'/products', loadChildren: ()=>import('./product/product.module').then(m=>m.ProductModule)},
 
 // {path:'/contact', loadChildren: ()=>import('./contact/contact.module').then(m=>m.ContactModule)}, {path:'/profile', loadChildren: ()=>import('./profile/profile.module').then(m=>m.ProfileModule)},

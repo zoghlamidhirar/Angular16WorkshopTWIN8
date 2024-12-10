@@ -1,61 +1,100 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <div>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="container mt-4">
+  <div class="form-group">
     <label for="name">Name:</label>
-    <input id="name" formControlName="name" />
-    <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <input type="text" class="form-control" id="name" formControlName="name" />
+    <div
+      *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="text-danger mt-1"
+    >
       <div *ngIf="name.errors?.['required']">Name is required!</div>
       <div *ngIf="name.errors?.['minlength']">
         Name must be at least 5 characters long.
       </div>
-      <div *ngIf="name.errors?.['pattern']">Name can only contain letters.</div>
+      <div *ngIf="name.errors?.['pattern']">
+        Name can only contain letters and spaces.
+      </div>
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="image">Image:</label>
-    <input id="image" formControlName="image" />
+    <input
+      type="text"
+      class="form-control"
+      id="image"
+      formControlName="image"
+    />
+    <div
+      *ngIf="image.invalid && (image.dirty || image.touched)"
+      class="text-danger mt-1"
+    >
+      <div *ngIf="image.errors?.['required']">Image URL is required!</div>
+    </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="categoryId">Category ID:</label>
-    <input id="categoryId" formControlName="categoryId" />
-    <div *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)">
+    <input
+      type="text"
+      class="form-control"
+      id="categoryId"
+      formControlName="categoryId"
+    />
+    <div
+      *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)"
+      class="text-danger mt-1"
+    >
       <div *ngIf="categoryId.errors?.['required']">
         Category ID is required!
       </div>
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="description">Description:</label>
-    <textarea id="description" formControlName="description"></textarea>
-  </div>
-
-  <div>
-    <label for="price">Price:</label>
-    <input id="price" formControlName="price" />
-    <div *ngIf="price.invalid && (price.dirty || price.touched)">
-      <div *ngIf="price.errors?.['required']">Price is required!</div>
-      <div *ngIf="price.errors?.['pattern']">
-        Price can only contain numbers and points.
+    <textarea
+      class="form-control"
+      id="description"
+      formControlName="description"
+    ></textarea>
+    <div
+      *ngIf="description.invalid && (description.dirty || description.touched)"
+      class="text-danger mt-1"
+    >
+      <div *ngIf="description.errors?.['required']">
+        Description is required!
       </div>
     </div>
   </div>
 
-  <div>
-    <label for="brand">Brand:</label>
-    <input id="brand" formControlName="brand" />
-  </div>
-
-  <div>
+  <div class="form-group">
     <label for="promotion">Promotion:</label>
-    <input id="promotion" formControlName="promotion" />
-    <div *ngIf="promotion.invalid && (promotion.dirty || promotion.touched)">
-      <div *ngIf="promotion.errors?.['pattern']">
-        Promotion must be a number between 0 and 100.
-      </div>
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="promotion"
+      formControlName="promotion"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="quantity">Quantity:</label>
+    <input
+      type="number"
+      class="form-control"
+      id="quantity"
+      formControlName="quantity"
+    />
+    <div
+      *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)"
+      class="text-danger mt-1"
+    >
+      <div *ngIf="quantity.errors?.['required']">Quantity is required!</div>
+      <div *ngIf="quantity.errors?.['min']">Quantity cannot be negative.</div>
     </div>
   </div>
 
-  <button type="submit" [disabled]="myForm.invalid">Save</button>
+  <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
+    Save
+  </button>
 </form>

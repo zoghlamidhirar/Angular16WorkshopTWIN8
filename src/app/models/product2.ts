@@ -1,6 +1,6 @@
 export class Product2 {
     id: number; 
-    title: string; 
+    name: string;
     image: string; 
     description: string; 
     promotion: boolean; 

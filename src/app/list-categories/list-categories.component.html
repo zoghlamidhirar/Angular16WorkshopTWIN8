@@ -13,7 +13,7 @@
     </div>
 
     <div
-      *ngFor="let category of categories | contains : titre : 'title'"
+      *ngFor="let category of filteredCategories()"
       class="col-md-4"
       style="margin-bottom: 20px"
     >

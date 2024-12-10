@@ -21,6 +21,7 @@ import { AddProductReactiveComponent } from './add-product-reactive/add-product-
 import { FormProductComponent } from './form-product/form-product.component';
 import { CardComponent } from './card/card.component';
 import { ListProductsComponent } from './list-products/list-products.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ListProductsComponent } from './list-products/list-products.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

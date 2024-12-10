@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  categoryId: number;
-  description: string;
-  price: number;
-  brand: string;
-  promotion: number;
-}
+import { CategoryService } from '../Services/category.service';
+import { Product2 } from '../models/product2';
 
 @Component({
   selector: 'app-add-product-reactive',
@@ -21,15 +12,16 @@ export class AddProductReactiveComponent implements OnInit {
 
   myForm: FormGroup;
 
+  constructor(private categoryService: CategoryService) {}
+
   ngOnInit() {
     this.myForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('[a-zA-Z]*')]),
-      image: new FormControl(''),
+      name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('[a-zA-Z ]*')]),
+      image: new FormControl('', [Validators.required]),
       categoryId: new FormControl('', [Validators.required]),
-      description: new FormControl(''),
-      price: new FormControl('', [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
-      brand: new FormControl(''),
-      promotion: new FormControl('', [Validators.pattern('^(0|[1-9][0-9]?)$')])
+      description: new FormControl('', [Validators.required]),
+      promotion: new FormControl(false, [Validators.required]),
+      quantity: new FormControl('', [Validators.required, Validators.min(0)])
     });
   }
 
@@ -37,25 +29,58 @@ export class AddProductReactiveComponent implements OnInit {
     return this.myForm.get('name');
   }
 
-  get price() {
-    return this.myForm.get('price');
+  get image() {
+    return this.myForm.get('image');
   }
 
   get categoryId() {
     return this.myForm.get('categoryId');
   }
 
+  get description() {
+    return this.myForm.get('description');
+  }
+
   get promotion() {
     return this.myForm.get('promotion');
   }
 
+  get quantity() {
+    return this.myForm.get('quantity');
+  }
+
   onSubmit() {
     if (this.myForm.valid) {
-      const newProduct: Product = this.myForm.value;
-      // Add the product to the product list here.
-      console.log(newProduct);
-      // Clear form after submission
-      this.myForm.reset();
+      this.categoryService.getListProductsFromBackend().subscribe(
+        (products: Product2[]) => {
+          const maxId = products.length > 0 ? Math.max(...products.map(p => p.id)) : 0;
+          const newProduct: Product2 = {
+            id: maxId + 1,
+            name: this.myForm.value.name,
+            image: this.myForm.value.image,
+            description: this.myForm.value.description,
+            promotion: this.myForm.value.promotion,
+            quantity: this.myForm.value.quantity,
+            categoryId: this.myForm.value.categoryId
+          };
+
+          this.categoryService.addProduct(newProduct).subscribe(
+            response => {
+              console.log('Product saved successfully', response);
+              // Clear form after submission
+              this.myForm.reset();
+            },
+            error => {
+              console.error('Error saving product', error);
+            }
+          );
+        },
+        error => {
+          console.error('Error fetching products', error);
+        }
+      );
+    } else {
+      console.log('Form is invalid');
     }
   }
 }
