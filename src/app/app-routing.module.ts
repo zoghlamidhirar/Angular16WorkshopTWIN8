@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'add-product', component: FormProductComponent },
   {path:"addreactive", component:AddProductReactiveComponent},
   {path:"ListProducts/:id", component:ListProductsComponent},
+  // { path: "edit-product/:id", component: AddProductReactiveComponent },
 //   {path:'/products', loadChildren: ()=>import('./product/product.module').then(m=>m.ProductModule)},
 
 // {path:'/contact', loadChildren: ()=>import('./contact/contact.module').then(m=>m.ContactModule)}, {path:'/profile', loadChildren: ()=>import('./profile/profile.module').then(m=>m.ProfileModule)},
